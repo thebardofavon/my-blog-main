@@ -1,0 +1,7 @@
+.hover-brown {
+  transition: filter 0.3s ease; 
+}
+
+.hover-brown:hover {
+  filter: opacity(0.8);
+}
