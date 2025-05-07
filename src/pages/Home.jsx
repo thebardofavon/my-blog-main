@@ -1,182 +1,3 @@
-// import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-
-// const Home = () => {
-//   // Animation effect on load
-//   useEffect(() => {
-//     const elements = document.querySelectorAll('.animate-fade-in');
-//     elements.forEach((element, index) => {
-//       setTimeout(() => {
-//         element.classList.add('opacity-100');
-//       }, index * 200);
-//     });
-//   }, []);
-
-//   return (
-//     <div className="min-h-screen">
-//       {/* Hero Section */}
-//       <section className="bg-gradient-to-r from-brown-300 via-brown-500 to-brown-700 py-16 rounded-lg shadow-lg">
-//         <div className="container mx-auto px-4">
-//           <div className="flex flex-col md:flex-row items-center justify-between">
-//             <div className="md:w-1/2 animate-fade-in opacity-0 transition-opacity duration-1000">
-//               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-//                 Hi, I'm Anushka Srivastava
-//               </h1>
-//               <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6">
-//                 Computer Science Student & Software Developer
-//               </h2>
-//               <p className="text-white text-lg mb-8">
-//                 I build elegant, functional web applications with React and Firebase.
-//                 Currently pursuing my Computer Science degree and seeking summer internship opportunities.
-//               </p>
-//               <div className="flex flex-wrap gap-4">
-//                 <Link to="/projects" className="bg-white text-brown-700 px-6 py-3 rounded-lg font-semibold hover:bg-brown-100 transition-colors hover-brown">
-//                   View My Work
-//                 </Link>
-//                 <Link to="/contact" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brown-700 transition-colors">
-//                   Get In Touch
-//                 </Link>
-//               </div>
-//             </div>
-//             <div className="md:w-1/2 mt-10 md:mt-0 animate-fade-in opacity-0 transition-opacity duration-1000">
-//               <img
-//                 src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
-//                 alt="Anushka Srivastava"
-//                 className="w-60 h-60 rounded-full mx-auto border-4 border-white shadow-lg"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Quick Overview Section */}
-//       <section className="py-16">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-fade-in opacity-0 transition-opacity duration-1000">
-//             What I Do
-//           </h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             {/* Development Card */}
-//             <div className="bg-white rounded-lg shadow-lg p-6 animate-fade-in opacity-0 transition-opacity duration-1000 hover:shadow-xl transition-shadow">
-//               <div className="text-center mb-4">
-//                 <i className="fas fa-code text-4xl text-brown-600"></i>
-//               </div>
-//               <h3 className="text-xl font-bold text-center text-brown-700 mb-2">Web Development</h3>
-//               <p className="text-gray-600 text-center">
-//                 I build responsive web applications using React, Firebase, and modern JavaScript.
-//               </p>
-//             </div>
-            
-//             {/* Problem Solving Card */}
-//             <div className="bg-white rounded-lg shadow-lg p-6 animate-fade-in opacity-0 transition-opacity duration-1000 hover:shadow-xl transition-shadow">
-//               <div className="text-center mb-4">
-//                 <i className="fas fa-puzzle-piece text-4xl text-brown-600"></i>
-//               </div>
-//               <h3 className="text-xl font-bold text-center text-brown-700 mb-2">Problem Solving</h3>
-//               <p className="text-gray-600 text-center">
-//                 I enjoy tackling complex problems with efficient algorithms and clean code.
-//               </p>
-//             </div>
-            
-//             {/* Content Creation Card */}
-//             <div className="bg-white rounded-lg shadow-lg p-6 animate-fade-in opacity-0 transition-opacity duration-1000 hover:shadow-xl transition-shadow">
-//               <div className="text-center mb-4">
-//                 <i className="fas fa-pencil-alt text-4xl text-brown-600"></i>
-//               </div>
-//               <h3 className="text-xl font-bold text-center text-brown-700 mb-2">Technical Writing</h3>
-//               <p className="text-gray-600 text-center">
-//                 I document my journey and share knowledge through my technical blog.
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Featured Projects Preview */}
-//       <section className="py-16 bg-brown-50 rounded-lg">
-//         <div className="container mx-auto px-4">
-//           <div className="flex justify-between items-center mb-12">
-//             <h2 className="text-3xl font-bold text-brown-700 animate-fade-in opacity-0 transition-opacity duration-1000">
-//               Featured Projects
-//             </h2>
-//             <Link to="/projects" className="text-brown-600 hover:text-brown-800 font-semibold hover:underline animate-fade-in opacity-0 transition-opacity duration-1000">
-//               View All <i className="fas fa-arrow-right ml-1"></i>
-//             </Link>
-//           </div>
-          
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//             {/* Feature 2 projects here - these would come from Firebase */}
-//             <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in opacity-0 transition-opacity duration-1000 hover:shadow-xl transition-shadow">
-//               <img 
-//                 src="/api/placeholder/600/300" 
-//                 alt="Project Preview" 
-//                 className="w-full h-48 object-cover"
-//               />
-//               <div className="p-6">
-//                 <h3 className="text-xl font-bold text-brown-700 mb-2">Portfolio Website</h3>
-//                 <p className="text-gray-600 mb-4">
-//                   A responsive portfolio website built with React and Firebase.
-//                 </p>
-//                 <div className="flex flex-wrap gap-2 mb-4">
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">React</span>
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">Firebase</span>
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-//                 </div>
-//                 <Link to="/projects/1" className="text-brown-600 hover:text-brown-800 font-semibold">
-//                   View Project <i className="fas fa-external-link-alt ml-1"></i>
-//                 </Link>
-//               </div>
-//             </div>
-            
-//             <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in opacity-0 transition-opacity duration-1000 hover:shadow-xl transition-shadow">
-//               <img 
-//                 src="/api/placeholder/600/300" 
-//                 alt="Project Preview" 
-//                 className="w-full h-48 object-cover"
-//               />
-//               <div className="p-6">
-//                 <h3 className="text-xl font-bold text-brown-700 mb-2">Task Management App</h3>
-//                 <p className="text-gray-600 mb-4">
-//                   A full-stack task management application with user authentication.
-//                 </p>
-//                 <div className="flex flex-wrap gap-2 mb-4">
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">React</span>
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">Node.js</span>
-//                   <span className="bg-brown-100 text-brown-700 px-2 py-1 rounded text-sm">MongoDB</span>
-//                 </div>
-//                 <Link to="/projects/2" className="text-brown-600 hover:text-brown-800 font-semibold">
-//                   View Project <i className="fas fa-external-link-alt ml-1"></i>
-//                 </Link>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Latest Blog Posts Preview */}
-//       <section className="py-16">
-//         <div className="container mx-auto px-4">
-//           <div className="flex justify-between items-center mb-12">
-//             <h2 className="text-3xl font-bold text-brown-700 animate-fade-in opacity-0 transition-opacity duration-1000">
-//               Latest from the Blog
-//             </h2>
-//             <Link to="/blog" className="text-brown-600 hover:text-brown-800 font-semibold hover:underline animate-fade-in opacity-0 transition-opacity duration-1000">
-//               View All Posts <i className="fas fa-arrow-right ml-1"></i>
-//             </Link>
-//           </div>
-          
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             {/* Feature 3 recent blog posts here - similar to what you already have */}
-//             {/* This would be populated from Firebase */}
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs, limit, query, orderBy } from 'firebase/firestore';
@@ -243,6 +64,10 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  const handleSendMessage = () =>  {
+    console.log("clicked!!");
+  }
 
   // Sample projects data (until you set up the Firebase collection)
   const sampleProjects = [
@@ -663,7 +488,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <p className="text-brown-100">anushka.srivastava@example.com</p>
+                    <p className="text-brown-100">anushka.srivastava.iiitg@gmail.com</p>
                   </div>
                 </div>
                 
@@ -673,7 +498,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Location</h4>
-                    <p className="text-brown-100">Your City, Country</p>
+                    <p className="text-brown-100">Gurugram, Haryana, India</p>
                   </div>
                 </div>
                 
@@ -687,7 +512,7 @@ const Home = () => {
                       <a href="https://www.linkedin.com/in/anushka-srivastava-72b719265/" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin"></i>
                       </a>
-                      <a href="https://github.com/thebardofavon?tab=repositories" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/thebardofavon" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-github"></i>
                       </a>
                       <a href="https://www.instagram.com/anushka._.srivastava_/" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
@@ -757,6 +582,7 @@ const Home = () => {
                 <button
                   type="submit"
                   className="bg-brown-600 text-white px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2 hover-brown"
+                  onClick={handleSendMessage}
                 >
                   Send Message
                 </button>

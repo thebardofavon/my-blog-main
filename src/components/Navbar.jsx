@@ -1,32 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import '@fortawesome/fontawesome-free/css/all.min.css';
-
-// const Navbar = () => {
-//   return (
-//     <nav className="bg-brown-700 text-white p-4 shadow-2xl">
-//       <div className="container mx-auto flex justify-between items-center">
-//         <Link to="/" className="text-xl font-bold">anushka</Link>
-//         <div className="hidden md:flex space-x-4">
-//           <Link to="/" className="hover:underline"><i className="fas fa-home mr-1"></i>Home</Link>
-//           <Link to="/projects" className="hover:underline"><i className="fas fa-code mr-1"></i>Projects</Link>
-//           <Link to="/skills" className="hover:underline"><i className="fas fa-cogs mr-1"></i>Skills</Link>
-//           <Link to="/resume" className="hover:underline"><i className="fas fa-file mr-1"></i>Resume</Link>
-//           <Link to="/blog" className="hover:underline"><i className="fas fa-blog mr-1"></i>Blog</Link>
-//           <Link to="/contact" className="hover:underline"><i className="fas fa-envelope mr-1"></i>Contact</Link>
-//           <Link to="/services" className="hover:underline"><i className="fas fa-briefcase mr-1"></i>Hire Me</Link>
-//         </div>
-        
-//         {/* Mobile menu button */}
-//         <div className="md:hidden">
-//           {/* Implement a mobile menu toggle here */}
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';

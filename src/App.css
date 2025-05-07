@@ -1,3 +1,4 @@
+/* Existing styles */
 .hover-brown {
   transition: filter 0.3s ease; 
 }
@@ -6,94 +7,170 @@
   filter: opacity(0.8);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  color: #4a4a4a;
-}
-
-.animate-on-scroll {
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -3px;
-  left: 0;
-  background-color: #fff;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #A38269;
-  color: white;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 40;
-  transform: translateY(20px);
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.scroll-to-top:hover {
-  background-color: #846A55;
-}
-
-.prose p {
-  margin-bottom: 1.5rem;
+/* Notion-inspired styling for blog posts */
+.notion-content p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
   line-height: 1.8;
+  font-size: 1.1rem;
+  color: #37352f;
 }
 
-.project-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.notion-content p:first-of-type {
+  margin-top: 0.5rem;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.notion-content h1, 
+.notion-content h2, 
+.notion-content h3 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #37352f;
 }
 
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.notion-content h1 {
+  font-size: 1.875rem;
 }
 
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.notion-content h2 {
+  font-size: 1.5rem;
 }
 
-section {
-  position: relative;
+.notion-content h3 {
+  font-size: 1.25rem;
+}
+
+.notion-content a {
+  color: #5c6ac4;
+  text-decoration: underline;
+  text-decoration-color: rgba(92, 106, 196, 0.4);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.notion-content a:hover {
+  text-decoration-color: rgba(92, 106, 196, 1);
+}
+
+.notion-content blockquote {
+  border-left: 3px solid rgba(55, 53, 47, 0.16);
+  padding-left: 1rem;
+  margin-left: 0;
+  color: rgba(55, 53, 47, 0.6);
+}
+
+.notion-content ul, 
+.notion-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.notion-content li {
+  margin: 0.5rem 0;
+}
+
+.notion-content code {
+  font-family: SFMono-Regular, Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+  background: rgba(135, 131, 120, 0.15);
+  color: #eb5757;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+.notion-content pre {
+  background: rgb(247, 246, 243);
+  padding: 1rem;
+  border-radius: 3px;
+  overflow-x: auto;
+}
+
+.notion-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #37352f;
+}
+
+.notion-content img {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+/* Customized Comments section for Notion style */
+.notion-comments textarea {
+  border-radius: 3px;
+  border: 1px solid rgba(55, 53, 47, 0.16);
+  padding: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+  width: 100%;
+  min-height: 100px;
+  transition: border 0.2s ease;
+}
+
+.notion-comments textarea:focus {
+  border: 1px solid rgba(55, 53, 47, 0.4);
+  outline: none;
+}
+
+.notion-comments input {
+  border-radius: 3px;
+  border: 1px solid rgba(55, 53, 47, 0.16);
+  padding: 0.5rem 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+  transition: border 0.2s ease;
+}
+
+.notion-comments input:focus {
+  border: 1px solid rgba(55, 53, 47, 0.4);
+  outline: none;
+}
+
+.notion-comments button {
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  background: #e9e9e7;
+  color: #37352f;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  border: none;
+}
+
+.notion-comments button:hover {
+  background: #dddcda;
+}
+
+.notion-comments-title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #37352f;
+}
+
+.notion-comment-item {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.notion-comment-item:last-child {
+  border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.notion-comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.notion-comment-name {
+  font-weight: 600;
+  color: #37352f;
+}
+
+.notion-comment-date {
+  color: rgba(55, 53, 47, 0.5);
+  font-size: 0.875rem;
+}
+
+.notion-comment-content {
+  color: #37352f;
+  line-height: 1.5;
 }
