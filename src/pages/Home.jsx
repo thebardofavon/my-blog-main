@@ -65,9 +65,30 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const handleSendMessage = () =>  {
-    console.log("clicked!!");
-  }
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message')
+    };
+    
+    // Here you would typically send this data to your backend
+    // For now, we'll just log it and show an alert
+    console.log("Form submitted:", data);
+    alert("Thank you for your message! I'll get back to you soon.");
+    e.target.reset();
+  };
+
+  const handleHireMe = () => {
+    window.location.href = `mailto:${profileInfo.email}?subject=Job Opportunity`;
+  };
+
+  const handleViewMoreProjects = () => {
+    window.location.href = '/projects';
+  };
 
   // Sample projects data (until you set up the Firebase collection)
   const sampleProjects = [
@@ -75,7 +96,7 @@ const Home = () => {
       id: "1",
       title: "Relational DB with RAM & Non-Volatile Memory",
       description: "Developed a complete ACID-compliant database with optimized B+ tree indexing, multi-granular concurrency control, and client-server architecture supporting standard operations. Achieved 321% faster throughput and 360% lower latency than Redis in YCSB benchmarks.",
-      image: "/images/projects/database.jpg",
+      image: "/images/projects/download.png",
       techStack: ["C", "B+ Tree", "ACID", "NVRAM"],
       githubLink: "https://github.com/thebardofavon/nvram-db",
       demoLink: null
@@ -84,7 +105,7 @@ const Home = () => {
       id: "2",
       title: "Luxe - AI-Powered E-commerce Platform",
       description: "Built responsive e-commerce platform with React/Redux featuring user/admin interfaces, authentication, and inventory management. Implemented AI recommendation system using CLIP and Annoy with 15.37% NDCG@5 improvement over baseline models.",
-      image: "/images/projects/luxe.jpg",
+      image: "/images/projects/download.png",
       techStack: ["ReactJS", "Redux Toolkit", "Material UI", "CLIP", "FastAPI"],
       githubLink: "https://github.com/thebardofavon/cs331",
       demoLink: null
@@ -93,7 +114,7 @@ const Home = () => {
       id: "3",
       title: "DocQA - Document Question Answering System",
       description: "Engineered a high-performance Document Question Answering chatbot leveraging ReactJS, LangChain, Pinecone, and Groq API with Llama 3. Achieved 25% reduction in query latency compared to traditional keyword search methods.",
-      image: "/images/projects/docqa.jpg",
+      image: "/images/projects/download.png",
       techStack: ["ReactJS", "Pinecone", "LangChain", "Groq API", "Llama 3"],
       githubLink: "https://github.com/thebardofavon/pinecone-langchain-nextjs-info-search-app",
       demoLink: null
@@ -138,45 +159,6 @@ const Home = () => {
     }
   ];
 
-  // Update education and experience
-  const education = {
-    current: {
-      school: "Indian Institute Of Information Technology Guwahati",
-      degree: "Bachelor of Technology in Computer Science and Engineering (CSE)",
-      period: "2022 - Present",
-      gpa: "8.76"
-    },
-    highSchool: {
-      school: "Lourdes Central School, Mangalore",
-      degree: "Central Board of Secondary Education (CBSE)",
-      period: "2021",
-      gpa: "95.4%"
-    }
-  };
-
-  const experience = {
-    current: {
-      company: "Airports Authority of India (AAI)",
-      position: "Summer Intern",
-      period: "June 2024 - July 2024",
-      location: "New Delhi",
-      description: [
-        "Worked under Manoj Mishra, DGM - IT Department, AAI",
-        "Contributed by suggesting changes to improve the official website of AAI with over 25,000 employee users."
-      ]
-    }
-  };
-
-  // Update achievements
-  const achievements = [
-    "Solved 500+ coding questions on LeetCode and GeeksForGeeks",
-    "Qualified for Round 2 in Google Girl Hackathon 2024",
-    "Qualified for Round 2 in JPMC Code For Good 2024",
-    "Top 30% in Flipkart Grid 5.0 national coding competition",
-    "Completed Google Cloud Computing Foundations & Generative AI in GDSC",
-    "Completed Foundations of Cybersecurity by Google on Coursera"
-  ];
-
   // Update profile info
   const profileInfo = {
     name: "Anushka Srivastava",
@@ -200,155 +182,81 @@ const Home = () => {
       icon: "fas fa-cube",
       description: "Speed solving various Rubik's cubes and puzzles",
       images: [
-        { name: "2x2 Cube", src: "/images/cubes/2x2.jpg" },
-        { name: "3x3 Cube", src: "/images/cubes/3x3.jpg" },
-        { name: "4x4 Cube", src: "/images/cubes/4x4.jpg" },
-        { name: "Mirror Cube", src: "/images/cubes/mirror.jpg" },
-        { name: "Pyraminx", src: "/images/cubes/pyraminx.jpg" },
-        { name: "Skewb", src: "/images/cubes/skewb.jpg" }
+        { name: "2x2 Cube", src: "/images/cubes/2x2.png" },
+        { name: "3x3 Cube", src: "/images/cubes/3x3.png" },
+        { name: "4x4 Cube", src: "/images/cubes/4x4.png" },
+        { name: "Mirror Cube", src: "/images/cubes/mirror.png" },
+        { name: "Pyraminx", src: "/images/cubes/pyraminx.png" },
+        { name: "Skewb", src: "/images/cubes/skewb.png" }
       ]
     },
     {
       name: "Piano",
       icon: "fas fa-music",
       description: "Playing classical and contemporary pieces",
-      image: "/images/piano.jpg"
+      image: "/images/piano.png"
     },
     {
       name: "Swimming",
       icon: "fas fa-swimming-pool",
       description: "Competitive swimming and water sports",
-      image: "/images/swimming.jpg"
+      image: "/images/swimming.png"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section id="about" className="relative">
+      <section id="about" className="relative bg-brown-50">
         {/* Cover Image */}
-        <div className="w-[100%] h-[300px] mx-auto relative">
+        <div className="w-[100%] h-[400px] mx-auto relative">
           <img
             src="https://i.pinimg.com/736x/97/f1/b7/97f1b7aadb7cb7df20993d5d1e588946.jpg"
             alt="Cover"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/20 to-black/20"></div>
         </div>
 
         {/* Profile Section */}
-        <div className="container mx-auto px-4 -mt-32 relative z-10">
+        <div className="container mx-auto px-4 -mt-48 relative z-10">
           <div className="flex flex-col md:flex-row items-start gap-8">
             {/* Profile Picture */}
-            <div className="w-40 h-40 md:w-56 md:h-56 rounded-lg overflow-hidden border-4 border-white shadow-xl mx-auto md:mx-0">
+            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0 transform hover:scale-105 transition-transform duration-300">
               <img
                 src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
+                // src="/images/me/prof.jpeg"
                 alt="Anushka Srivastava"
                 className="w-full h-full object-cover"
               />
             </div>
 
             {/* Profile Info */}
-            <div className="flex-1 text-white text-center md:text-left">
-              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+            <div className="flex-1 text-center md:text-left bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-brown-800">
                 Anushka Srivastava
               </h1>
-              <h2 className="text-xl md:text-2xl font-bold mb-4">
+              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-brown-600">
                 Computer Science Student & Software Developer
               </h2>
-              <p className="text-base md:text-lg mb-6 max-w-lg mx-auto md:mx-0">
+              <p className="text-base md:text-lg mb-6 max-w-lg mx-auto md:mx-0 text-gray-700">
                 I'm passionate about building elegant, functional web applications with React and Firebase.
                 Currently pursuing my Computer Science degree and seeking summer internship opportunities.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <a 
                   href="#projects" 
-                  className="bg-white text-brown-700 px-6 py-3 rounded-lg font-semibold hover:bg-brown-100 transition-colors"
+                  className="bg-brown-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brown-700 transition-all transform hover:scale-105 shadow-lg"
                 >
                   View My Work
                 </a>
                 <a 
-                  href="/resume.pdf" 
-                  download
-                  className="bg-brown-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brown-700 transition-colors"
-                >
-                  <i className="fas fa-file-download mr-2"></i> Download Resume
-                </a>
-                <a 
                   href="#contact" 
-                  className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brown-700 transition-colors"
+                  className="bg-white text-brown-600 border-2 border-brown-600 px-6 py-3 rounded-lg font-semibold hover:bg-brown-50 transition-all transform hover:scale-105 shadow-lg"
                 >
                   Get In Touch
                 </a>
-                <a 
-                  href="mailto:anushka.srivastava.iiitg@gmail.com?subject=Job Opportunity" 
-                  className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors animate-pulse"
-                >
-                  <i className="fas fa-briefcase mr-2"></i> Hire Me
-                </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Skills
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {skillsData.map((category, categoryIndex) => (
-              <div 
-                key={categoryIndex} 
-                className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
-                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
-              >
-                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">
-                  {category.category}
-                </h3>
-                
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
-                        <span className="font-medium text-gray-700">{skill.name}</span>
-                        <span className="text-sm text-gray-500">{skill.proficiency}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div 
-                          className="bg-brown-600 h-2.5 rounded-full" 
-                          style={{ width: `${skill.proficiency}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Additional Skills */}
-          <div className="mt-16 max-w-4xl mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500">
-            <h3 className="text-xl font-bold text-center text-brown-700 mb-8">
-              Other Skills & Tools
-            </h3>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                "Git & GitHub", "VS Code", "Responsive Design", 
-                "Agile/Scrum", "Problem Solving", "Technical Writing",
-                "UI/UX Principles", "RESTful APIs", "MongoDB"
-              ].map((skill, index) => (
-                <span 
-                  key={index} 
-                  className="bg-brown-50 text-brown-700 py-2 px-4 rounded-lg text-center"
-                >
-                  {skill}
-                </span>
-              ))}
             </div>
           </div>
         </div>
@@ -357,9 +265,17 @@ const Home = () => {
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-brown-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Projects
-          </h2>
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+              My Projects
+            </h2>
+            <button
+              onClick={handleViewMoreProjects}
+              className="bg-brown-600 text-white px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors hover-brown animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
+            >
+              View More Projects
+            </button>
+          </div>
           
           <div className="max-w-6xl mx-auto">
             {projects.map((project, index) => (
@@ -423,10 +339,113 @@ const Home = () => {
         </div>
       </section>
 
+       {/* Skills Section */}
+       <section id="skills" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            My Skills
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {skillsData.map((category, categoryIndex) => (
+              <div 
+                key={categoryIndex} 
+                className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
+                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
+              >
+                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">
+                  {category.category}
+                </h3>
+                
+                <div className="space-y-6">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex}>
+                      <div className="flex justify-between mb-1">
+                        <span className="font-medium text-gray-700">{skill.name}</span>
+                        <span className="text-sm text-gray-500">{skill.proficiency}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2.5">
+                        <div 
+                          className="bg-brown-600 h-2.5 rounded-full" 
+                          style={{ width: `${skill.proficiency}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Additional Skills */}
+          <div className="mt-16 max-w-4xl mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500">
+            <h3 className="text-xl font-bold text-center text-brown-700 mb-8">
+              Other Skills & Tools
+            </h3>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                "Git & GitHub", "VS Code", "Responsive Design", 
+                "Agile/Scrum", "Problem Solving", "Technical Writing", "RESTful APIs", "MongoDB"
+              ].map((skill, index) => (
+                <span 
+                  key={index} 
+                  className="bg-brown-50 text-brown-700 py-2 px-4 rounded-lg text-center"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Resume Section */}
+      <section id="resume" className="py-20 bg-brown-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            My Resume
+          </h2>
+          
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-brown-700 mb-4">Career Interests & Goals</h3>
+              <p className="text-gray-600 mb-6">
+                I am passionate about software development with a focus on building scalable and efficient solutions. 
+                My interests lie in full-stack development, database systems, and AI/ML applications. 
+                I am particularly drawn to projects that combine technical innovation with practical problem-solving.
+              </p>
+              <p className="text-gray-600">
+                Currently seeking opportunities to contribute to impactful projects and grow as a software engineer.
+              </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-center gap-6 mt-8">
+              <a 
+                href="https://drive.google.com/file/d/1V8mAU0IH7UEyE9iRETYLPwEu4vC4_AIY/view?usp=drive_link" 
+                download
+                className="bg-brown-600 text-white px-8 py-3 rounded-lg hover:bg-brown-700 transition-colors flex items-center justify-center gap-2 hover-brown"
+              >
+                <i className="fas fa-download"></i>
+                Download Resume
+              </a>
+              <a 
+                href="#contact" 
+                className="bg-white border-2 border-brown-600 text-brown-600 px-8 py-3 rounded-lg hover:bg-brown-50 transition-colors flex items-center justify-center gap-2"
+                onClick={handleHireMe}
+              >
+                <i className="fas fa-handshake"></i>
+                Hire Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hobbies Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12">
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
             My Hobbies & Interests
           </h2>
           
@@ -434,7 +453,8 @@ const Home = () => {
             {hobbies.map((hobby, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow group"
+                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow group animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className="w-16 h-16 bg-brown-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <i className={`${hobby.icon} text-2xl text-brown-600`}></i>
@@ -464,7 +484,7 @@ const Home = () => {
                     <img
                       src={hobby.image}
                       alt={hobby.name}
-                      className="w-full h-48 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
+                      className="w-full h-49 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
                       <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
@@ -516,7 +536,7 @@ const Home = () => {
                         {post.content.replaceAll('#', ' ').substring(0, 100)}...
                       </p>
                       <div className="flex justify-between items-center">
-                        <span className="text-xs text-gray-500">{post.date}</span>
+                        <span className="text-xs text-gray-500">{new Date(post.date).toLocaleDateString()}</span>
                         <span className="text-white bg-brown-500 hover:bg-brown-700 px-3 py-1 rounded transition-all">
                           Read More
                         </span>
@@ -526,7 +546,7 @@ const Home = () => {
                 </div>
               ))
             ) : (
-              <div className="col-span-3 text-center py-8">
+              <div className="col-span-3 text-center py-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
                 <p className="text-gray-500">No blog posts available yet.</p>
               </div>
             )}
@@ -606,7 +626,7 @@ const Home = () => {
             <div className="md:w-2/3 bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-300">
               <h3 className="text-xl font-bold text-brown-700 mb-6">Send Me a Message</h3>
               
-              <form>
+              <form onSubmit={handleSendMessage}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
@@ -660,7 +680,6 @@ const Home = () => {
                 <button
                   type="submit"
                   className="bg-brown-600 text-white px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2 hover-brown"
-                  onClick={handleSendMessage}
                 >
                   Send Message
                 </button>
