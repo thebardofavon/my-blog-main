@@ -1,0 +1,96 @@
+      {/* Resume Section */}
+      <section id="resume" className="py-20 bg-brown-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            Resume
+          </h2>
+          
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            <div className="bg-gradient-to-r from-brown-600 to-brown-800 p-8 flex flex-col md:flex-row justify-between items-center gap-4">
+              <div>
+                <h3 className="text-2xl font-bold text-white">{profileInfo.name}</h3>
+                <p className="text-brown-100">{profileInfo.title}</p>
+              </div>
+              
+              <div className="flex gap-4">
+                <a 
+                  href="/resume.pdf" 
+                  download
+                  className="bg-white text-brown-700 px-4 py-2 rounded-lg hover:bg-brown-100 transition-colors flex items-center hover-brown"
+                >
+                  <i className="fas fa-download mr-2"></i> Download PDF
+                </a>
+                <a 
+                  href={`mailto:${profileInfo.email}?subject=Job Opportunity`}
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center hover-brown"
+                >
+                  <i className="fas fa-briefcase mr-2"></i> Hire Me
+                </a>
+              </div>
+            </div>
+            
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-xl font-bold text-brown-700 mb-6 flex items-center">
+                    <i className="fas fa-graduation-cap mr-3 text-brown-600"></i> Education
+                  </h4>
+                  
+                  <div className="border-l-4 border-brown-500 pl-6 py-2 mb-6">
+                    <div className="flex justify-between items-center">
+                      <h5 className="text-lg font-semibold">{education.current.degree}</h5>
+                      <span className="text-brown-500 font-medium">{education.current.period}</span>
+                    </div>
+                    <p className="text-gray-700 mb-2">{education.current.school}</p>
+                    <p className="text-gray-600">
+                      CGPA: {education.current.gpa}
+                    </p>
+                  </div>
+
+                  <div className="border-l-4 border-brown-500 pl-6 py-2">
+                    <div className="flex justify-between items-center">
+                      <h5 className="text-lg font-semibold">{education.highSchool.degree}</h5>
+                      <span className="text-brown-500 font-medium">{education.highSchool.period}</span>
+                    </div>
+                    <p className="text-gray-700 mb-2">{education.highSchool.school}</p>
+                    <p className="text-gray-600">
+                      Percentage: {education.highSchool.gpa}
+                    </p>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="text-xl font-bold text-brown-700 mb-6 flex items-center">
+                    <i className="fas fa-briefcase mr-3 text-brown-600"></i> Experience
+                  </h4>
+                  
+                  <div className="border-l-4 border-brown-500 pl-6 py-2">
+                    <div className="flex justify-between items-center">
+                      <h5 className="text-lg font-semibold">{experience.current.position}</h5>
+                      <span className="text-brown-500 font-medium">{experience.current.period}</span>
+                    </div>
+                    <p className="text-gray-700 mb-2">{experience.current.company}, {experience.current.location}</p>
+                    <ul className="list-disc list-inside text-gray-600 mt-2">
+                      {experience.current.description.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h4 className="text-xl font-bold text-brown-700 mb-6 flex items-center">
+                  <i className="fas fa-trophy mr-3 text-brown-600"></i> Achievements
+                </h4>
+                <ul className="list-disc list-inside text-gray-600">
+                  {achievements.map((achievement, index) => (
+                    <li key={index} className="mb-2">{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+

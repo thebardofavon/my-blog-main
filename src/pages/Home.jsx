@@ -73,30 +73,30 @@ const Home = () => {
   const sampleProjects = [
     {
       id: "1",
-      title: "Portfolio Website",
-      description: "A responsive portfolio website built with React and Firebase. Features a blog, project showcase, and contact form.",
-      image: "/api/placeholder/600/300",
-      techStack: ["React", "Firebase", "Tailwind CSS"],
-      demoLink: "https://your-portfolio-url.com",
-      githubLink: "https://github.com/yourusername/portfolio",
+      title: "Relational DB with RAM & Non-Volatile Memory",
+      description: "Developed a complete ACID-compliant database with optimized B+ tree indexing, multi-granular concurrency control, and client-server architecture supporting standard operations. Achieved 321% faster throughput and 360% lower latency than Redis in YCSB benchmarks.",
+      image: "/images/projects/database.jpg",
+      techStack: ["C", "B+ Tree", "ACID", "NVRAM"],
+      githubLink: "https://github.com/thebardofavon/nvram-db",
+      demoLink: null
     },
     {
       id: "2",
-      title: "Task Management App",
-      description: "A full-stack task management application with user authentication, task categories, and drag-and-drop functionality.",
-      image: "/api/placeholder/600/300",
-      techStack: ["React", "Node.js", "MongoDB"],
-      demoLink: "https://task-app-demo.herokuapp.com",
-      githubLink: "https://github.com/yourusername/task-manager",
+      title: "Luxe - AI-Powered E-commerce Platform",
+      description: "Built responsive e-commerce platform with React/Redux featuring user/admin interfaces, authentication, and inventory management. Implemented AI recommendation system using CLIP and Annoy with 15.37% NDCG@5 improvement over baseline models.",
+      image: "/images/projects/luxe.jpg",
+      techStack: ["ReactJS", "Redux Toolkit", "Material UI", "CLIP", "FastAPI"],
+      githubLink: "https://github.com/thebardofavon/cs331",
+      demoLink: null
     },
     {
       id: "3",
-      title: "E-commerce Product Page",
-      description: "A responsive e-commerce product page with image gallery, reviews, and cart functionality.",
-      image: "/api/placeholder/600/300",
-      techStack: ["React", "CSS Modules", "Context API"],
-      demoLink: "https://ecommerce-product-demo.netlify.app",
-      githubLink: "https://github.com/yourusername/ecommerce-product",
+      title: "DocQA - Document Question Answering System",
+      description: "Engineered a high-performance Document Question Answering chatbot leveraging ReactJS, LangChain, Pinecone, and Groq API with Llama 3. Achieved 25% reduction in query latency compared to traditional keyword search methods.",
+      image: "/images/projects/docqa.jpg",
+      techStack: ["ReactJS", "Pinecone", "LangChain", "Groq API", "Llama 3"],
+      githubLink: "https://github.com/thebardofavon/pinecone-langchain-nextjs-info-search-app",
+      demoLink: null
     }
   ];
 
@@ -105,113 +105,250 @@ const Home = () => {
     {
       category: "Languages",
       skills: [
-        { name: "JavaScript", proficiency: 90 },
-        { name: "HTML5", proficiency: 95 },
-        { name: "CSS3", proficiency: 85 },
-        { name: "Python", proficiency: 80 },
-        { name: "Java", proficiency: 75 },
+        { name: "C/C++", proficiency: 90 },
+        { name: "Java", proficiency: 85 },
+        { name: "Python", proficiency: 85 },
+        { name: "JavaScript/TypeScript", proficiency: 90 },
+        { name: "HTML5/CSS3", proficiency: 85 },
+        { name: "SQL", proficiency: 80 },
+        { name: "Go", proficiency: 75 }
       ]
     },
     {
-      category: "Frontend",
+      category: "Developer Tools",
       skills: [
-        { name: "React", proficiency: 90 },
-        { name: "Tailwind CSS", proficiency: 85 },
-        { name: "Bootstrap", proficiency: 80 },
-      ]
-    },
-    {
-      category: "Backend",
-      skills: [
-        { name: "Node.js", proficiency: 75 },
+        { name: "Git", proficiency: 90 },
+        { name: "VS Code", proficiency: 95 },
         { name: "Firebase", proficiency: 85 },
-        { name: "RESTful APIs", proficiency: 80 }
+        { name: "AWS", proficiency: 80 },
+        { name: "Postman", proficiency: 85 },
+        { name: "LangChain", proficiency: 80 }
       ]
+    },
+    {
+      category: "Frameworks",
+      skills: [
+        { name: "ReactJS", proficiency: 90 },
+        { name: "Node.js", proficiency: 85 },
+        { name: "MaterialUI", proficiency: 85 },
+        { name: "Tailwind CSS", proficiency: 90 },
+        { name: "FastAPI", proficiency: 80 },
+        { name: "Next.js", proficiency: 85 }
+      ]
+    }
+  ];
+
+  // Update education and experience
+  const education = {
+    current: {
+      school: "Indian Institute Of Information Technology Guwahati",
+      degree: "Bachelor of Technology in Computer Science and Engineering (CSE)",
+      period: "2022 - Present",
+      gpa: "8.76"
+    },
+    highSchool: {
+      school: "Lourdes Central School, Mangalore",
+      degree: "Central Board of Secondary Education (CBSE)",
+      period: "2021",
+      gpa: "95.4%"
+    }
+  };
+
+  const experience = {
+    current: {
+      company: "Airports Authority of India (AAI)",
+      position: "Summer Intern",
+      period: "June 2024 - July 2024",
+      location: "New Delhi",
+      description: [
+        "Worked under Manoj Mishra, DGM - IT Department, AAI",
+        "Contributed by suggesting changes to improve the official website of AAI with over 25,000 employee users."
+      ]
+    }
+  };
+
+  // Update achievements
+  const achievements = [
+    "Solved 500+ coding questions on LeetCode and GeeksForGeeks",
+    "Qualified for Round 2 in Google Girl Hackathon 2024",
+    "Qualified for Round 2 in JPMC Code For Good 2024",
+    "Top 30% in Flipkart Grid 5.0 national coding competition",
+    "Completed Google Cloud Computing Foundations & Generative AI in GDSC",
+    "Completed Foundations of Cybersecurity by Google on Coursera"
+  ];
+
+  // Update profile info
+  const profileInfo = {
+    name: "Anushka Srivastava",
+    title: "Computer Science Student & Software Developer",
+    description: "I'm a Computer Science student at IIIT Guwahati with a passion for building innovative software solutions. Currently seeking internship opportunities to apply my skills in a professional environment.",
+    email: "anushka.srivastava.iiitg@gmail.com",
+    phone: "+91 7026179621",
+    location: "Gurugram, Haryana, India",
+    social: {
+      linkedin: "https://www.linkedin.com/in/anushka-srivastava-72b719265/",
+      github: "https://github.com/thebardofavon",
+      leetcode: "https://leetcode.com/thebardofavon/",
+      geeksforgeeks: "https://auth.geeksforgeeks.org/user/schrodingerszanycat/"
+    }
+  };
+
+  // Add hobbies data
+  const hobbies = [
+    {
+      name: "Cube Collection",
+      icon: "fas fa-cube",
+      description: "Speed solving various Rubik's cubes and puzzles",
+      images: [
+        { name: "2x2 Cube", src: "/images/cubes/2x2.jpg" },
+        { name: "3x3 Cube", src: "/images/cubes/3x3.jpg" },
+        { name: "4x4 Cube", src: "/images/cubes/4x4.jpg" },
+        { name: "Mirror Cube", src: "/images/cubes/mirror.jpg" },
+        { name: "Pyraminx", src: "/images/cubes/pyraminx.jpg" },
+        { name: "Skewb", src: "/images/cubes/skewb.jpg" }
+      ]
+    },
+    {
+      name: "Piano",
+      icon: "fas fa-music",
+      description: "Playing classical and contemporary pieces",
+      image: "/images/piano.jpg"
+    },
+    {
+      name: "Swimming",
+      icon: "fas fa-swimming-pool",
+      description: "Competitive swimming and water sports",
+      image: "/images/swimming.jpg"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section id="about" className="py-20 bg-gradient-to-r from-brown-300 via-brown-500 to-brown-700">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            <img
-              src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
-              alt="Anushka Srivastava"
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-white shadow-lg mx-auto"
-            />
-          </div>
-          <div className="md:w-1/2 text-center md:text-left animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-300">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Hi, I'm Anushka Srivastava
-            </h1>
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Computer Science Student & Software Developer
-            </h2>
-            <p className="text-white text-lg mb-8 max-w-lg">
-              I'm passionate about building elegant, functional web applications with React and Firebase.
-              Currently pursuing my Computer Science degree and seeking summer internship opportunities.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <a 
-                href="#projects" 
-                className="bg-white text-brown-700 px-6 py-3 rounded-lg font-semibold hover:bg-brown-100 transition-colors hover-brown"
-              >
-                View My Work
-              </a>
-              <a 
-                href="#contact" 
-                className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brown-700 transition-colors"
-              >
-                Get In Touch
-              </a>
+      <section id="about" className="relative">
+        {/* Cover Image */}
+        <div className="w-[100%] h-[300px] mx-auto relative">
+          <img
+            src="https://i.pinimg.com/736x/97/f1/b7/97f1b7aadb7cb7df20993d5d1e588946.jpg"
+            alt="Cover"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        </div>
+
+        {/* Profile Section */}
+        <div className="container mx-auto px-4 -mt-32 relative z-10">
+          <div className="flex flex-col md:flex-row items-start gap-8">
+            {/* Profile Picture */}
+            <div className="w-40 h-40 md:w-56 md:h-56 rounded-lg overflow-hidden border-4 border-white shadow-xl mx-auto md:mx-0">
+              <img
+                src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
+                alt="Anushka Srivastava"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Profile Info */}
+            <div className="flex-1 text-white text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+                Anushka Srivastava
+              </h1>
+              <h2 className="text-xl md:text-2xl font-bold mb-4">
+                Computer Science Student & Software Developer
+              </h2>
+              <p className="text-base md:text-lg mb-6 max-w-lg mx-auto md:mx-0">
+                I'm passionate about building elegant, functional web applications with React and Firebase.
+                Currently pursuing my Computer Science degree and seeking summer internship opportunities.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a 
+                  href="#projects" 
+                  className="bg-white text-brown-700 px-6 py-3 rounded-lg font-semibold hover:bg-brown-100 transition-colors"
+                >
+                  View My Work
+                </a>
+                <a 
+                  href="/resume.pdf" 
+                  download
+                  className="bg-brown-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brown-700 transition-colors"
+                >
+                  <i className="fas fa-file-download mr-2"></i> Download Resume
+                </a>
+                <a 
+                  href="#contact" 
+                  className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brown-700 transition-colors"
+                >
+                  Get In Touch
+                </a>
+                <a 
+                  href="mailto:anushka.srivastava.iiitg@gmail.com?subject=Job Opportunity" 
+                  className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors animate-pulse"
+                >
+                  <i className="fas fa-briefcase mr-2"></i> Hire Me
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 bg-white">
+      {/* Skills Section */}
+      <section id="skills" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            <h2 className="text-3xl font-bold text-brown-700 mb-8">About Me</h2>
-            <p className="text-lg text-gray-700 mb-6">
-              I'm a third-year Computer Science student with a passion for web development, problem-solving, 
-              and creating elegant, user-friendly applications. My journey in tech began with curiosity about 
-              how websites work, which led me to explore HTML, CSS, and JavaScript, eventually discovering my 
-              love for React and modern web technologies.
-            </p>
-            <p className="text-lg text-gray-700 mb-6">
-              When I'm not coding, you'll find me writing technical articles, experimenting with new technologies, 
-              or contributing to open-source projects. I'm currently seeking summer internship opportunities to apply 
-              my skills in a professional environment and learn from industry experts.
-            </p>
-            <div className="flex justify-center space-x-4 mt-8">
-              <a
-                href="https://www.linkedin.com/in/anushka-srivastava-72b719265/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brown-500 hover:text-brown-700 transition-colors"
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+            My Skills
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {skillsData.map((category, categoryIndex) => (
+              <div 
+                key={categoryIndex} 
+                className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
+                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
               >
-                <i className="fab fa-linkedin fa-2x"></i>
-              </a>
-              <a
-                href="https://github.com/thebardofavon?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brown-500 hover:text-brown-700 transition-colors"
-              >
-                <i className="fab fa-github fa-2x"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/anushka._.srivastava_/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brown-500 hover:text-brown-700 transition-colors"
-              >
-                <i className="fab fa-instagram fa-2x"></i>
-              </a>
+                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">
+                  {category.category}
+                </h3>
+                
+                <div className="space-y-6">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex}>
+                      <div className="flex justify-between mb-1">
+                        <span className="font-medium text-gray-700">{skill.name}</span>
+                        <span className="text-sm text-gray-500">{skill.proficiency}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2.5">
+                        <div 
+                          className="bg-brown-600 h-2.5 rounded-full" 
+                          style={{ width: `${skill.proficiency}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Additional Skills */}
+          <div className="mt-16 max-w-4xl mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500">
+            <h3 className="text-xl font-bold text-center text-brown-700 mb-8">
+              Other Skills & Tools
+            </h3>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                "Git & GitHub", "VS Code", "Responsive Design", 
+                "Agile/Scrum", "Problem Solving", "Technical Writing",
+                "UI/UX Principles", "RESTful APIs", "MongoDB"
+              ].map((skill, index) => (
+                <span 
+                  key={index} 
+                  className="bg-brown-50 text-brown-700 py-2 px-4 rounded-lg text-center"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -286,136 +423,64 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-white">
+      {/* Hobbies Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Skills
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12">
+            My Hobbies & Interests
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {skillsData.map((category, categoryIndex) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {hobbies.map((hobby, index) => (
               <div 
-                key={categoryIndex} 
-                className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
-                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow group"
               >
-                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">
-                  {category.category}
-                </h3>
-                
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
-                        <span className="font-medium text-gray-700">{skill.name}</span>
-                        <span className="text-sm text-gray-500">{skill.proficiency}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div 
-                          className="bg-brown-600 h-2.5 rounded-full" 
-                          style={{ width: `${skill.proficiency}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="w-16 h-16 bg-brown-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <i className={`${hobby.icon} text-2xl text-brown-600`}></i>
                 </div>
+                <h3 className="text-xl font-bold text-brown-700 mb-4">{hobby.name}</h3>
+                <p className="text-gray-600 mb-6">{hobby.description}</p>
+                
+                {hobby.name === "Cube Collection" ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    {hobby.images.map((cube, idx) => (
+                      <div key={idx} className="relative group">
+                        <img
+                          src={cube.src}
+                          alt={cube.name}
+                          className="w-full h-32 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                            {cube.name}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="relative group">
+                    <img
+                      src={hobby.image}
+                      alt={hobby.name}
+                      className="w-full h-48 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                        {hobby.name}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
-          </div>
-          
-          {/* Additional Skills */}
-          <div className="mt-16 max-w-4xl mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500">
-            <h3 className="text-xl font-bold text-center text-brown-700 mb-8">
-              Other Skills & Tools
-            </h3>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                "Git & GitHub", "VS Code", "Responsive Design", 
-                "Agile/Scrum", "Problem Solving", "Technical Writing",
-                "UI/UX Principles", "RESTful APIs", "MongoDB"
-              ].map((skill, index) => (
-                <span 
-                  key={index} 
-                  className="bg-brown-50 text-brown-700 py-2 px-4 rounded-lg text-center"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Resume Section */}
-      <section id="resume" className="py-20 bg-brown-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            Resume
-          </h2>
-          
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            <div className="bg-gradient-to-r from-brown-600 to-brown-800 p-8 flex justify-between items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-white">Anushka Srivastava</h3>
-                <p className="text-brown-100">Computer Science Student & Software Developer</p>
-              </div>
-              
-              <a 
-                href="/path-to-your-resume.pdf" 
-                download
-                className="bg-white text-brown-700 px-4 py-2 rounded-lg hover:bg-brown-100 transition-colors flex items-center hover-brown"
-              >
-                <i className="fas fa-download mr-2"></i> Download PDF
-              </a>
-            </div>
-            
-            <div className="p-8">
-              {/* Education */}
-              <div className="mb-10">
-                <h4 className="text-xl font-bold text-brown-700 mb-6 flex items-center">
-                  <i className="fas fa-graduation-cap mr-3 text-brown-600"></i> Education
-                </h4>
-                
-                <div className="border-l-4 border-brown-500 pl-6 py-2 mb-6">
-                  <div className="flex justify-between items-center">
-                    <h5 className="text-lg font-semibold">Bachelor of Computer Science</h5>
-                    <span className="text-brown-500 font-medium">2022 - Present</span>
-                  </div>
-                  <p className="text-gray-700 mb-2">University Name</p>
-                  <p className="text-gray-600">
-                    Current GPA: 3.8/4.0
-                  </p>
-                </div>
-              </div>
-              
-              {/* Experience */}
-              <div>
-                <h4 className="text-xl font-bold text-brown-700 mb-6 flex items-center">
-                  <i className="fas fa-briefcase mr-3 text-brown-600"></i> Experience
-                </h4>
-                
-                <div className="border-l-4 border-brown-500 pl-6 py-2">
-                  <div className="flex justify-between items-center">
-                    <h5 className="text-lg font-semibold">Web Development Intern</h5>
-                    <span className="text-brown-500 font-medium">Summer 2023</span>
-                  </div>
-                  <p className="text-gray-700 mb-2">Company Name</p>
-                  <ul className="list-disc list-inside text-gray-600 mt-2">
-                    <li>Developed and maintained responsive web applications using React</li>
-                    <li>Collaborated with designers to implement UI/UX improvements</li>
-                    <li>Participated in code reviews and team meetings</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brown-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold text-brown-700 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
@@ -470,7 +535,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-brown-50">
+      <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
             Get In Touch
@@ -488,7 +553,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <p className="text-brown-100">anushka.srivastava.iiitg@gmail.com</p>
+                    <p className="text-brown-100">{profileInfo.email}</p>
                   </div>
                 </div>
                 
@@ -498,10 +563,20 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Location</h4>
-                    <p className="text-brown-100">Gurugram, Haryana, India</p>
+                    <p className="text-brown-100">{profileInfo.location}</p>
                   </div>
                 </div>
                 
+                <div className="flex items-start">
+                  <div className="bg-brown-500 p-2 rounded-full mr-4">
+                    <i className="fas fa-phone"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Phone</h4>
+                    <p className="text-brown-100">{profileInfo.phone}</p>
+                  </div>
+                </div>
+
                 <div className="flex items-start">
                   <div className="bg-brown-500 p-2 rounded-full mr-4">
                     <i className="fas fa-globe"></i>
@@ -509,14 +584,17 @@ const Home = () => {
                   <div>
                     <h4 className="font-medium">Social Media</h4>
                     <div className="flex space-x-4 mt-2">
-                      <a href="https://www.linkedin.com/in/anushka-srivastava-72b719265/" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                      <a href={profileInfo.social.linkedin} className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin"></i>
                       </a>
-                      <a href="https://github.com/thebardofavon" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                      <a href={profileInfo.social.github} className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-github"></i>
                       </a>
-                      <a href="https://www.instagram.com/anushka._.srivastava_/" className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-instagram"></i>
+                      <a href={profileInfo.social.leetcode} className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-leetcode"></i>
+                      </a>
+                      <a href={profileInfo.social.geeksforgeeks} className="hover:text-brown-300 transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-geeks-for-geeks"></i>
                       </a>
                     </div>
                   </div>
