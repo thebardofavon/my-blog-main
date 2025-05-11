@@ -56,8 +56,11 @@ const Home = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log(postsList);
         
         setRecentPosts(postsList);
+
+
       } catch (error) {
         console.error("Error fetching data: ", error);
         setProjects(sampleProjects);
@@ -84,10 +87,7 @@ const Home = () => {
         message: formData.get('message')
       };
 
-      // Call the Cloud Function
-      const functions = getFunctions();
-      const handleContactForm = httpsCallable(functions, 'handleContactForm');
-      await handleContactForm(data);
+      // TODO 
 
       setFormSuccess('Thank you for your message! I will get back to you soon.');
       e.target.reset();
@@ -107,7 +107,6 @@ const Home = () => {
     window.location.href = '/projects';
   };
 
-  // Sample projects data (until you set up the Firebase collection)
   const sampleProjects = [
     {
       id: "1",
