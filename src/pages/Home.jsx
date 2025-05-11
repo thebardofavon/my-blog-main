@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs, limit, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
   const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState('');
+  const [formSuccess, setFormSuccess] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,21 +69,34 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      subject: formData.get('subject'),
-      message: formData.get('message')
-    };
-    
-    // Here you would typically send this data to your backend
-    // For now, we'll just log it and show an alert
-    console.log("Form submitted:", data);
-    alert("Thank you for your message! I'll get back to you soon.");
-    e.target.reset();
+    setFormLoading(true);
+    setFormError('');
+    setFormSuccess('');
+
+    try {
+      const formData = new FormData(e.target);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+
+      // Call the Cloud Function
+      const functions = getFunctions();
+      const handleContactForm = httpsCallable(functions, 'handleContactForm');
+      await handleContactForm(data);
+
+      setFormSuccess('Thank you for your message! I will get back to you soon.');
+      e.target.reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setFormError(error.message || 'Failed to send message. Please try again.');
+    } finally {
+      setFormLoading(false);
+    }
   };
 
   const handleHireMe = () => {
@@ -105,7 +122,7 @@ const Home = () => {
       id: "2",
       title: "Luxe - AI-Powered E-commerce Platform",
       description: "Built responsive e-commerce platform with React/Redux featuring user/admin interfaces, authentication, and inventory management. Implemented AI recommendation system using CLIP and Annoy with 15.37% NDCG@5 improvement over baseline models.",
-      image: "/images/projects/download.png",
+      image: "/images/projects/luxe.png",
       techStack: ["ReactJS", "Redux Toolkit", "Material UI", "CLIP", "FastAPI"],
       githubLink: "https://github.com/thebardofavon/cs331",
       demoLink: null
@@ -114,7 +131,7 @@ const Home = () => {
       id: "3",
       title: "DocQA - Document Question Answering System",
       description: "Engineered a high-performance Document Question Answering chatbot leveraging ReactJS, LangChain, Pinecone, and Groq API with Llama 3. Achieved 25% reduction in query latency compared to traditional keyword search methods.",
-      image: "/images/projects/download.png",
+      image: "/images/projects/docqa.png",
       techStack: ["ReactJS", "Pinecone", "LangChain", "Groq API", "Llama 3"],
       githubLink: "https://github.com/thebardofavon/pinecone-langchain-nextjs-info-search-app",
       demoLink: null
@@ -127,12 +144,11 @@ const Home = () => {
       category: "Languages",
       skills: [
         { name: "C/C++", proficiency: 90 },
-        { name: "Java", proficiency: 85 },
-        { name: "Python", proficiency: 85 },
+        { name: "Java", proficiency: 65 },
+        { name: "Python", proficiency: 65 },
         { name: "JavaScript/TypeScript", proficiency: 90 },
         { name: "HTML5/CSS3", proficiency: 85 },
         { name: "SQL", proficiency: 80 },
-        { name: "Go", proficiency: 75 }
       ]
     },
     {
@@ -154,7 +170,7 @@ const Home = () => {
         { name: "MaterialUI", proficiency: 85 },
         { name: "Tailwind CSS", proficiency: 90 },
         { name: "FastAPI", proficiency: 80 },
-        { name: "Next.js", proficiency: 85 }
+        { name: "Next.js", proficiency: 80 }
       ]
     }
   ];
@@ -285,7 +301,7 @@ const Home = () => {
                   bg-white rounded-lg shadow-lg overflow-hidden mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="md:w-2/5">
+                <div className="md:w-3/5">
                   <img 
                     src={project.image || "/api/placeholder/600/400"} 
                     alt={project.title} 
@@ -386,7 +402,7 @@ const Home = () => {
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "Git & GitHub", "VS Code", "Responsive Design", 
-                "Agile/Scrum", "Problem Solving", "Technical Writing", "RESTful APIs", "MongoDB"
+                "Agile/Scrum", "Problem Solving", "Technical Writing", "RESTful APIs"
               ].map((skill, index) => (
                 <span 
                   key={index} 
@@ -626,6 +642,18 @@ const Home = () => {
             <div className="md:w-2/3 bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-300">
               <h3 className="text-xl font-bold text-brown-700 mb-6">Send Me a Message</h3>
               
+              {formError && (
+                <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                  {formError}
+                </div>
+              )}
+              
+              {formSuccess && (
+                <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                  {formSuccess}
+                </div>
+              )}
+              
               <form onSubmit={handleSendMessage}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -637,6 +665,7 @@ const Home = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500"
                       placeholder="Your name"
+                      disabled={formLoading}
                     />
                   </div>
                   
@@ -649,6 +678,7 @@ const Home = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500"
                       placeholder="Your email"
+                      disabled={formLoading}
                     />
                   </div>
                 </div>
@@ -662,6 +692,7 @@ const Home = () => {
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500"
                     placeholder="Message subject"
+                    disabled={formLoading}
                   />
                 </div>
                 
@@ -674,14 +705,26 @@ const Home = () => {
                     rows="5"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500"
                     placeholder="Your message"
+                    disabled={formLoading}
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="bg-brown-600 text-white px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2 hover-brown"
+                  className="bg-brown-600 text-white px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2 hover-brown disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={formLoading}
                 >
-                  Send Message
+                  {formLoading ? (
+                    <span className="flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </form>
             </div>
