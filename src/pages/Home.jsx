@@ -34,17 +34,20 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch projects (if you have a projects collection)
-        const projectsCollection = collection(db, "projects");
-        const projectsSnapshot = await getDocs(projectsCollection);
-        const projectsList = projectsSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        // // Fetch projects (if you have a projects collection)
+        // const projectsCollection = collection(db, "projects");
+        // const projectsSnapshot = await getDocs(projectsCollection);
+        // const projectsList = projectsSnapshot.docs.map(doc => ({
+        //   id: doc.id,
+        //   ...doc.data(),
+        // }));
         
-        // If no projects in Firestore yet, use sample data
-        setProjects(projectsList.length > 0 ? projectsList : sampleProjects);
-        
+        // // If no projects in Firestore yet, use sample data
+        // setProjects(projectsList.length > 0 ? projectsList : sampleProjects);
+
+        // Hardcoding the projects for now
+        setProjects(sampleProjects);
+
         // Fetch recent blog posts
         const postsQuery = query(
           collection(db, "posts"),
