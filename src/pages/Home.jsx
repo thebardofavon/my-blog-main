@@ -268,11 +268,19 @@ const Home = () => {
                 >
                   View My Work
                 </a>
-                <a 
+                {/* <a 
                   href="#contact" 
                   className="bg-white text-brown-600 border-2 border-brown-600 px-6 py-3 rounded-lg font-semibold hover:bg-brown-50 transition-all transform hover:scale-105 shadow-lg"
                 >
                   Get In Touch
+                </a> */}
+                <a 
+                  href="#contact" 
+                  className="bg-white border-2 border-brown-600 text-brown-600 px-8 py-3 rounded-lg hover:bg-brown-50 transition-colors flex items-center justify-center gap-2"
+                  onClick={handleHireMe}
+                >
+                  <i className="fas fa-handshake"></i>
+                  Hire Me
                 </a>
               </div>
             </div>
@@ -418,107 +426,83 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Resume Section */}
-      <section id="resume" className="py-20 bg-brown-50">
+      {/* Education Section */}
+      <section id="education" className="py-20 bg-brown-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Resume
+            Education
           </h2>
           
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-brown-700 mb-4">Career Interests & Goals</h3>
-              <p className="text-gray-600 mb-6">
-                I am passionate about software development with a focus on building scalable and efficient solutions. 
-                My interests lie in full-stack development, database systems, and AI/ML applications. 
-                I am particularly drawn to projects that combine technical innovation with practical problem-solving.
-              </p>
-              <p className="text-gray-600">
-                Currently seeking opportunities to contribute to impactful projects and grow as a software engineer.
-              </p>
-            </div>
-
-            <div className="flex flex-col md:flex-row justify-center gap-6 mt-8">
-              <a 
-                href="https://drive.google.com/file/d/1V8mAU0IH7UEyE9iRETYLPwEu4vC4_AIY/view?usp=drive_link" 
-                download
-                className="bg-brown-600 text-white px-8 py-3 rounded-lg hover:bg-brown-700 transition-colors flex items-center justify-center gap-2 hover-brown"
-              >
-                <i className="fas fa-download"></i>
-                Download Resume
-              </a>
-              <a 
-                href="#contact" 
-                className="bg-white border-2 border-brown-600 text-brown-600 px-8 py-3 rounded-lg hover:bg-brown-50 transition-colors flex items-center justify-center gap-2"
-                onClick={handleHireMe}
-              >
-                <i className="fas fa-handshake"></i>
-                Hire Me
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Hobbies Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Hobbies & Interests
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {hobbies.map((hobby, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow group animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="w-16 h-16 bg-brown-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <i className={`${hobby.icon} text-2xl text-brown-600`}></i>
+          <div className="max-w-4xl mx-auto space-y-6">
+            {/* IIIT Guwahati */}
+            <div className="bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-brown-700">Indian Institute of Information Technology, Guwahati</h3>
+                  <p className="text-gray-600">Bachelor of Technology in Computer Science and Engineering</p>
+                  {/* <p className="text-gray-500 mt-1">CGPA: 8.76</p> */}
                 </div>
-                <h3 className="text-xl font-bold text-brown-700 mb-4">{hobby.name}</h3>
-                <p className="text-gray-600 mb-6">{hobby.description}</p>
-                
-                {hobby.name === "Cube Collection" ? (
-                  <div className="grid grid-cols-2 gap-4">
-                    {hobby.images.map((cube, idx) => (
-                      <div key={idx} className="relative group">
-                        <img
-                          src={cube.src}
-                          alt={cube.name}
-                          className="w-full h-32 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
-                        />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
-                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-                            {cube.name}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="relative group">
-                    <img
-                      src={hobby.image}
-                      alt={hobby.name}
-                      className="w-full h-49 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
-                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-                        {hobby.name}
-                      </span>
-                    </div>
-                  </div>
-                )}
+                <div className="text-right mt-4 md:mt-0">
+                  <span className="bg-brown-100 text-brown-700 px-4 py-2 rounded-full text-sm font-medium">
+                    2022 - Present
+                  </span>
+                </div>
               </div>
-            ))}
+              
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="bg-brown-100 p-2 rounded-full mr-4">
+                    <i className="fas fa-graduation-cap text-brown-600"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-brown-700">Relevant Coursework</h4>
+                    <p className="text-gray-600">
+                      Algorithms, Artificial Intelligence, Computer Architecture, Data Structures, Database Management System, 
+                      Operating Systems, Object-Oriented Programming, Linear Algebra, Probability, Machine Learning, 
+                      Networking, Cloud Computing, Theory of Computation, Software Engineering, Computer Security
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Lourdes Central School - 12th
+            <div className="bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-brown-700">Lourdes Central School, Mangalore</h3>
+                  <p className="text-gray-600">Central Board of Secondary Education (CBSE)</p>
+                  <p className="text-gray-500 mt-1">Percentage: 95.4%</p>
+                </div>
+                <div className="text-right mt-4 md:mt-0">
+                  <span className="bg-brown-100 text-brown-700 px-4 py-2 rounded-full text-sm font-medium">
+                    2021
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Lourdes Central School - 10th */}
+            {/* <div className="bg-white rounded-lg shadow-lg p-8 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-brown-700">Lourdes Central School, Mangalore</h3>
+                  <p className="text-gray-600">Central Board of Secondary Education (CBSE)</p>
+                  <p className="text-gray-500 mt-1">Percentage: 95.2%</p>
+                </div>
+                <div className="text-right mt-4 md:mt-0">
+                  <span className="bg-brown-100 text-brown-700 px-4 py-2 rounded-full text-sm font-medium">
+                    2019
+                  </span>
+                </div>
+              </div>
+            </div>  */}
           </div>
         </div>
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-20 bg-brown-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold text-brown-700 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
@@ -573,7 +557,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="contact" className="py-20 bg-brown-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
             Get In Touch

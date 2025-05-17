@@ -21,8 +21,11 @@ const Navbar = () => {
           <a href="/#skills" className="hover:underline">
             <i className="fas fa-cogs mr-1"></i>Skills
           </a>
-          <a href="/#resume" className="hover:underline">
+          {/* <a href="/#resume" className="hover:underline">
             <i className="fas fa-file mr-1"></i>Resume
+          </a> */}
+          <a href="/#education" className="hover:underline">
+            <i className="fas fa-graduation-cap mr-1"></i>Education
           </a>
           <a href="/#contact" className="hover:underline">
             <i className="fas fa-envelope mr-1"></i>Contact
@@ -66,12 +69,19 @@ const Navbar = () => {
             >
               <i className="fas fa-cogs mr-2"></i>Skills
             </a>
-            <a 
+            {/* <a 
               href="/#resume" 
               className="hover:bg-brown-500 px-3 py-2 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               <i className="fas fa-file mr-2"></i>Resume
+            </a> */}
+            <a 
+              href="/#education" 
+              className="hover:bg-brown-500 px-3 py-2 rounded"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <i className="fas fa-cogs mr-2"></i>Education
             </a>
             <a 
               href="/#contact" 

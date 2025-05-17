@@ -69,15 +69,6 @@ const Projects = () => {
       githubLink: "https://github.com/yourusername/academic-tracker",
       demoLink: null
     },
-    {
-      id: "9",
-      title: "Personal Portfolio Website",
-      description: "Designed and developed a modern, responsive portfolio website showcasing my projects, skills, and experience. Features include dynamic content loading, smooth animations, and a contact form with Firebase integration.",
-      image: "/images/projects/portfolio.png",
-      techStack: ["React", "Firebase", "Tailwind CSS", "React Router", "Framer Motion"],
-      githubLink: "https://github.com/thebardofavon/my-blog",
-      demoLink: "https://anushka-srivastava.vercel.app"
-    }
   ];
 
   if (loading) {
