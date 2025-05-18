@@ -113,11 +113,11 @@ const Home = () => {
   const sampleProjects = [
     {
       id: "1",
-      title: "Relational DB with RAM & Non-Volatile Memory",
-      description: "Developed a complete ACID-compliant database with optimized B+ tree indexing, multi-granular concurrency control, and client-server architecture supporting standard operations. Achieved 321% faster throughput and 360% lower latency than Redis in YCSB benchmarks.",
-      image: "/images/projects/download.png",
-      techStack: ["C", "B+ Tree", "ACID", "NVRAM"],
-      githubLink: "https://github.com/thebardofavon/nvram-db",
+      title: "DocQA - Document Question Answering System",
+      description: "Engineered a high-performance Document Question Answering chatbot leveraging ReactJS, LangChain, Pinecone, and Groq API with Llama 3. Achieved 25% reduction in query latency compared to traditional keyword search methods.",
+      image: "/images/projects/docqa.png",
+      techStack: ["ReactJS", "Pinecone", "LangChain", "Groq API", "Llama 3"],
+      githubLink: "https://github.com/thebardofavon/pinecone-langchain-nextjs-info-search-app",
       demoLink: null
     },
     {
@@ -131,13 +131,13 @@ const Home = () => {
     },
     {
       id: "3",
-      title: "DocQA - Document Question Answering System",
-      description: "Engineered a high-performance Document Question Answering chatbot leveraging ReactJS, LangChain, Pinecone, and Groq API with Llama 3. Achieved 25% reduction in query latency compared to traditional keyword search methods.",
-      image: "/images/projects/docqa.png",
-      techStack: ["ReactJS", "Pinecone", "LangChain", "Groq API", "Llama 3"],
-      githubLink: "https://github.com/thebardofavon/pinecone-langchain-nextjs-info-search-app",
+      title: "Relational DB with RAM & Non-Volatile Memory",
+      description: "Developed a complete ACID-compliant database with optimized B+ tree indexing, multi-granular concurrency control, and client-server architecture supporting standard operations. Achieved 321% faster throughput and 360% lower latency than Redis in YCSB benchmarks.",
+      image: "/images/projects/download.png",
+      techStack: ["C", "B+ Tree", "ACID", "NVRAM"],
+      githubLink: "https://github.com/thebardofavon/nvram-db",
       demoLink: null
-    }
+    },
   ];
 
   // Skills data organized by category
@@ -242,8 +242,8 @@ const Home = () => {
             {/* Profile Picture */}
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0 transform hover:scale-105 transition-transform duration-300">
               <img
-                src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
-                // src="/images/me/prof.jpeg"
+                // src="https://i.imgur.com/6ReKHbM_d.jpeg?maxwidth=520&shape=thumb&fidelity=high"
+                src="/images/me/profile-photo-edit.jpeg"
                 alt="Anushka Srivastava"
                 className="w-full h-full object-cover"
               />
@@ -258,8 +258,8 @@ const Home = () => {
                 Computer Science Student & Software Developer
               </h2>
               <p className="text-base md:text-lg mb-6 max-w-lg mx-auto md:mx-0 text-gray-700">
-                I'm passionate about building elegant, functional web applications with React and Firebase.
-                Currently pursuing my Computer Science degree and seeking summer internship opportunities.
+                I build elegant, functional web applications with React, Node.js and Firebase. Fueled by AI's potential and a commitment to continuous learning, 
+                I'm pursuing my Computer Science degree and seeking summer internships or full-time roles.
               </p>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <a 
