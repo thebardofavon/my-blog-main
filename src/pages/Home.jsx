@@ -131,12 +131,12 @@ const Home = () => {
     },
     {
       id: "3",
-      title: "Relational DB with RAM & Non-Volatile Memory",
-      description: "Developed a complete ACID-compliant database with optimized B+ tree indexing, multi-granular concurrency control, and client-server architecture supporting standard operations. Achieved 321% faster throughput and 360% lower latency than Redis in YCSB benchmarks.",
-      image: "/images/projects/download.png",
-      techStack: ["C", "B+ Tree", "ACID", "NVRAM"],
-      githubLink: "https://github.com/thebardofavon/nvram-db",
-      demoLink: null
+      title: "MasterChef Canada Bot",
+      description: "Built a full-stack chatbot that lets users interact with AI-driven versions of MasterChef Canada judges. Features include real-time text-to-speech voice synthesis for Alvin Leung, Michael Bonacini, and Claudio Aprile; mute/unmute controls; and character-specific response styling.",
+      image: "/images/more-projects/masterchef-bot.png",
+      techStack: ["React.js", "Node.js", "Express", "OpenRouter API", "Web Speech API", "CSS"],
+      githubLink: "https://github.com/thebardofavon/masterchef-canada-bot",
+      demoLink: "https://masterchef-canada-chatbot.netlify.app/"
     },
   ];
 
@@ -291,8 +291,8 @@ const Home = () => {
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-brown-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-center text-brown-700 mb-6 md:mb-0 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
               My Projects
             </h2>
             <button
@@ -303,58 +303,55 @@ const Home = () => {
             </button>
           </div>
           
-          <div className="max-w-6xl mx-auto">
-            {projects.map((project, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
               <div 
-                key={project.id} 
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} 
-                  bg-white rounded-lg shadow-lg overflow-hidden mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                key={project.id}
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
               >
-                <div className="md:w-3/5">
-                  <img 
-                    src={project.image || "/api/placeholder/600/400"} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover min-h-[200px]"
-                  />
-                </div>
-                <div className="md:w-3/5 p-8">
-                  <h3 className="text-2xl font-bold text-brown-700 mb-4">{project.title}</h3>
-                  
-                  <p className="text-gray-600 mb-6">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-50 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-brown-700 mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
                     {project.description}
                   </p>
-                  
-                  <div className="mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack?.map((tech, i) => (
-                        <span key={i} className="bg-brown-100 text-brown-700 px-3 py-1 rounded-full text-sm">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, index) => (
+                      <span 
+                        key={index}
+                        className="bg-brown-100 text-brown-700 px-3 py-1 rounded-full text-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                  
                   <div className="flex gap-4">
                     {project.demoLink && (
                       <a 
-                        href={project.demoLink} 
-                        target="_blank" 
+                        href={project.demoLink}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-brown-600 text-white px-4 py-2 rounded-lg hover:bg-brown-700 transition-colors hover-brown"
+                        className="bg-brown-600 text-white px-4 py-2 rounded-lg hover:bg-brown-700 transition-colors"
                       >
-                        <i className="fas fa-external-link-alt mr-2"></i> Live Demo
+                        <i className="fas fa-external-link-alt mr-2"></i>
+                        Live Demo
                       </a>
                     )}
-                    
                     {project.githubLink && (
                       <a 
-                        href={project.githubLink} 
-                        target="_blank" 
+                        href={project.githubLink}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors"
                       >
-                        <i className="fab fa-github mr-2"></i> View Code
+                        <i className="fab fa-github mr-2"></i>
+                        View Code
                       </a>
                     )}
                   </div>
