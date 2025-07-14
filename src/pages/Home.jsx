@@ -141,34 +141,35 @@ const Home = () => {
     {
       category: "Languages",
       skills: [
-        { name: "C/C++", proficiency: 90 },
-        { name: "Java", proficiency: 65 },
-        { name: "Python", proficiency: 65 },
-        { name: "JavaScript/TypeScript", proficiency: 90 },
-        { name: "HTML5/CSS3", proficiency: 85 },
-        { name: "SQL", proficiency: 80 },
+        { name: "C/C++", proficiency: 90, icon: "fab fa-c", funFact: "For DSA!" },
+        { name: "Java", proficiency: 65, icon: "fab fa-java", funFact: "Learnt it and used in Semester 3 project." },
+        { name: "Python", proficiency: 65, icon: "fab fa-python", funFact: "Created fun projects in school." },
+        { name: "JavaScript/TypeScript", proficiency: 90, icon: "fab fa-js", funFact: "Enables me to turns ideas into tangible solutions!" },
+        { name: "HTML5/CSS3", proficiency: 85, icon: "fab fa-html5", funFact: "I've designed a few responsive websites." },
+        { name: "SQL", proficiency: 80, icon: "fas fa-database", funFact: "I've worked with MySQL and dabbled with PostgreSQL." },
       ]
     },
     {
       category: "Developer Tools",
       skills: [
-        { name: "Git", proficiency: 90 },
-        { name: "VS Code", proficiency: 95 },
-        { name: "Firebase", proficiency: 85 },
-        { name: "AWS", proficiency: 80 },
-        { name: "Postman", proficiency: 85 },
-        { name: "LangChain", proficiency: 80 }
+        // { name: "Git", proficiency: 90, icon: "git-alt", funFact: "I've contributed to open-source projects." },
+        { name: "VS Code", proficiency: 95, icon: "fa-solid fa-code", funFact: "I'm a VS Code power user." },
+        { name: "Firebase", proficiency: 85, icon: "fa-solid fa-fire", funFact: "I've used Firebase for real-time applications." },
+        { name: "AWS", proficiency: 80, icon: "fa-brands fa-aws", funFact: "I've deployed a few applications on AWS." },
+        { name: "Postman", proficiency: 85, icon: "fa-solid fa-hand-sparkles", funFact: "I've tested a lot of APIs." },
+        { name: "LangChain", proficiency: 80, icon: "fa-solid fa-link", funFact: "I've built a few LLM applications." },
+        { name: "Azure", proficiency: 80, icon: "fa-solid fa-cloud", funFact: "Learnt through my internship at SPNeosys LLC." },
       ]
     },
     {
       category: "Frameworks",
       skills: [
-        { name: "ReactJS", proficiency: 90 },
-        { name: "Node.js", proficiency: 85 },
-        { name: "MaterialUI", proficiency: 85 },
-        { name: "Tailwind CSS", proficiency: 90 },
-        { name: "FastAPI", proficiency: 80 },
-        { name: "Next.js", proficiency: 80 }
+        { name: "ReactJS", proficiency: 90, icon: "fab fa-react", funFact: "I've built a few React applications." },
+        { name: "Node.js", proficiency: 85, icon: "fab fa-node-js", funFact: "I've created a few backend services." },
+        { name: "MaterialUI", proficiency: 85, icon: "fa-solid fa-palette", funFact: "I've designed a few beautiful UIs." },
+        { name: "Tailwind CSS", proficiency: 90, icon: "fab fa-css3", funFact: "Used to make my projects look good!" },
+        { name: "FastAPI", proficiency: 80, icon: "fa-solid fa-bolt", funFact: "I've built a few RESTful APIs." },
+        { name: "Next.js", proficiency: 80, icon: "fa-solid fa-rocket", funFact: "I've deployed a few Next.js applications." },
       ]
     }
   ];
@@ -362,59 +363,25 @@ const Home = () => {
        <section id="skills" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brown-700 mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
-            My Skills
+            My Skills 
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {skillsData.map((category, categoryIndex) => (
-              <div 
-                key={categoryIndex} 
-                className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000"
-                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
-              >
-                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">
-                  {category.category}
-                </h3>
-                
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
+            {skillsData.map((category, idx) => (
+              <div key={idx} className="bg-white rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000">
+                <h3 className="text-xl font-bold text-brown-700 mb-6 text-center">{category.category}</h3>
+                <div className="space-y-4">
+                  {category.skills.map((skill, i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <i className={`${skill.icon} text-2xl text-brown-600`}></i>
+                      <div>
                         <span className="font-medium text-gray-700">{skill.name}</span>
-                        <span className="text-sm text-gray-500">{skill.proficiency}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div 
-                          className="bg-brown-600 h-2.5 rounded-full" 
-                          style={{ width: `${skill.proficiency}%` }}
-                        ></div>
+                        <p className="text-sm text-gray-500">{skill.funFact}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
-          </div>
-          
-          {/* Additional Skills */}
-          <div className="mt-16 max-w-4xl mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500">
-            <h3 className="text-xl font-bold text-center text-brown-700 mb-8">
-              Other Skills & Tools
-            </h3>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                "Git & GitHub", "VS Code", "Responsive Design", 
-                "Agile/Scrum", "Problem Solving", "Technical Writing", "RESTful APIs"
-              ].map((skill, index) => (
-                <span 
-                  key={index} 
-                  className="bg-brown-50 text-brown-700 py-2 px-4 rounded-lg text-center"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
