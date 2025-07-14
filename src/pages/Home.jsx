@@ -328,7 +328,7 @@ const Home = () => {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    {project.demoLink && (
+                    {/* {project.demoLink && (
                       <a 
                         href={project.demoLink}
                         target="_blank"
@@ -338,7 +338,7 @@ const Home = () => {
                         <i className="fas fa-external-link-alt mr-2"></i>
                         Live Demo
                       </a>
-                    )}
+                    )} */}
                     {project.githubLink && (
                       <a 
                         href={project.githubLink}
