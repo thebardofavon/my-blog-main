@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { collection, getDocs, limit, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import emailjs from '@emailjs/browser';
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
@@ -82,21 +83,16 @@ const Home = () => {
     setFormSuccess('');
 
     try {
-      const formData = new FormData(e.target);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message')
-      };
-
-      // TODO 
-
+      const result = await emailjs.sendForm(
+        'service_l7c648q',    
+        'template_spdr3ja',   
+        e.target,
+        'etBEg7LZ2lmYb9N62'     
+      );
       setFormSuccess('Thank you for your message! I will get back to you soon.');
       e.target.reset();
     } catch (error) {
-      console.error('Error sending message:', error);
-      setFormError(error.message || 'Failed to send message. Please try again.');
+      setFormError('Failed to send message. Please try again.');
     } finally {
       setFormLoading(false);
     }
@@ -180,7 +176,7 @@ const Home = () => {
   // Update profile info
   const profileInfo = {
     name: "Anushka Srivastava",
-    title: "Computer Science Student & Software Developer",
+    title: "Computer Science Student",
     description: "I'm a Computer Science student at IIIT Guwahati with a passion for building innovative software solutions. Currently seeking internship opportunities to apply my skills in a professional environment.",
     email: "anushka.srivastava.iiitg@gmail.com",
     phone: "+91 7026179621",
@@ -255,7 +251,7 @@ const Home = () => {
                 Anushka Srivastava
               </h1>
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-brown-600">
-                Computer Science Student & Software Developer
+                Computer Science Student
               </h2>
               <p className="text-base md:text-lg mb-6 max-w-lg mx-auto md:mx-0 text-gray-700">
                 I build elegant, functional web applications with React, Node.js and Firebase. Fueled by AI's potential and a commitment to continuous learning, 
@@ -549,6 +545,62 @@ const Home = () => {
                 <p className="text-gray-500">No blog posts available yet.</p>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+       {/* Hobbies Section */}
+       <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-brown-700 mb-12">
+            My Hobbies & Interests
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {hobbies.map((hobby, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow group"
+              >
+                <div className="w-16 h-16 bg-brown-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <i className={`${hobby.icon} text-2xl text-brown-600`}></i>
+                </div>
+                <h3 className="text-xl font-bold text-brown-700 mb-4">{hobby.name}</h3>
+                <p className="text-gray-600 mb-6">{hobby.description}</p>
+                
+                {hobby.name === "Cube Collection" ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    {hobby.images.map((cube, idx) => (
+                      <div key={idx} className="relative group">
+                        <img
+                          src={cube.src}
+                          alt={cube.name}
+                          className="w-full h-32 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                            {cube.name}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="relative group">
+                    <img
+                      src={hobby.image}
+                      alt={hobby.name}
+                      className="w-full h-48 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                        {hobby.name}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
